@@ -2,7 +2,6 @@
 #testowanie algorytmu FCFS
 
 import random 
-#Baw się dobrze 
 
 def sprawdz_t_czekania(l_ciagow, t_wykonania, t_czekania, t_przybycia):
     t_obslugi = [0] * l_ciagow
