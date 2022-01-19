@@ -1,5 +1,5 @@
 #Python
-#testowanie algorytmu FCFS
+#testowanie algorytmu FCFS z SJF
 
 import random 
 
@@ -31,12 +31,35 @@ t_przetwarzania = [[0 for x in range(l_procesow)] for y in range(l_ciagow)]
 t_suma_czekania = 0
 t_suma_przetwarzania = 0
 
-#określanie czasów
-random.seed(54821)
+# a = "abcd" -> a[1] = 3 -> "a3cd" 
+
+with open("przybycie.txt",'r') as plik_p:                                                               ###zmiennne na polski
+    dane = plik_p.readlines()
+    
+    for i in range(l_ciagow):
+        dane[i] = dane[i].split(" ")
+        for j in range(l_procesow):
+            dane[i][j] = int(dane[i][j])
+    t_przybycia = dane
+    plik_p.close()
+
+with open("wykonanie.txt",'r') as file_w:
+    content = file_w.readlines()
+    file_w.close()
+
 for i in range(l_ciagow):
+    content[i] = content[i].split(" ")
     for j in range(l_procesow):
-        t_przybycia[i][j] = random.randint(1,50)                       #arrival time            zwiększ jeśli będzie mała różnica z innym algorytmem
-        t_wykonania[i][j] = random.randint(1,20)                       #burst time
+        content[i][j] = int(content[i][j])
+t_wykonania = content
+    
+                                                                                                        ###
+#określanie czasów
+# random.seed(54821)
+# for i in range(l_ciagow):
+#     for j in range(l_procesow):
+#         t_przybycia[i][j] = random.randint(1,50)                       #arrival time            zwiększ jeśli będzie mała różnica z innym algorytmem
+#         t_wykonania[i][j] = random.randint(1,20)                       #burst time
                                           
         
 # FCFS
@@ -97,3 +120,46 @@ t_srednia_przetwarzania_sjf = t_suma_przetwarzania_sjf/(l_procesow*l_ciagow)
 
 print(t_srednia_czekania_sjf) 
 print(t_srednia_przetwarzania_sjf)
+
+
+# plik = open("lokalizacja", "r")
+# plik.writelines()
+# plik.close()                                                                                                                                                                                          ###########################################################
+
+# 'w' otwiera plik, jeżeli istnieje to usuwa jego zawartość
+# 'a' dopisuje do końca pliku
+# 'r+' otwiera w trybie r/w
+# 'r' otwiera w trybie odczytu
+
+try:
+    with open("wyniki.txt", "x") as plik:
+        plik.write("Średnia czekania FCFS: ")
+        plik.write(str(t_srednia_czekania))
+        plik.write("\nŚrednia przetwarzania FCFS: ")
+        plik.write(str(t_srednia_przetwarzania))
+        plik.write("\nŚrednia czekania SJF: ")
+        plik.write(str(t_srednia_czekania_sjf))
+        plik.write("\nŚrednia przetwarzania SJF: ")
+        plik.write(str(t_srednia_przetwarzania_sjf))
+
+        plik.close()
+except FileExistsError:
+    print("Plik o nazwie 'wyniki.txt' już istnieje!")
+    test = input("Czy chcesz go nadpisać? [Y/N]:")
+    
+    if test.lower() == 'y':
+        with open("wyniki.txt", "w") as plik:
+            plik.write("Średnia czekania FCFS: ")
+            plik.write(str(t_srednia_czekania))
+            plik.write("\nŚrednia przetwarzania FCFS: ")
+            plik.write(str(t_srednia_przetwarzania))
+            plik.write("\nŚrednia czekania SJF: ")
+            plik.write(str(t_srednia_czekania_sjf))
+            plik.write("\nŚrednia przetwarzania SJF: ")
+            plik.write(str(t_srednia_przetwarzania_sjf))
+            plik.close()
+        
+
+
+
+
