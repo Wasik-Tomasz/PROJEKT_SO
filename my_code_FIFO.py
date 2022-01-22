@@ -1,7 +1,6 @@
 #Python
 #Algorytm zastępywania stron FIFO
 
-import random
 import obsluga_plikow
 
 def wyliczIndex(index, zakres):
@@ -30,15 +29,16 @@ for k in range(len(ramki)):
                 zawartosc_ramki[index] = nr_stron[i][j]
                 index = wyliczIndex(index, ramki[k])
                 ile[k] += 1
-                
+ 
 print("\nŚrednia liczba brakujących stron dla ramki o zakresie 3:", ile[0])
 print("Średnia liczba brakujących stron dla ramki o zakresie 5:", ile[1])
 print("Średnia liczba brakujących stron dla ramki o zakresie 7:", ile[2],end='\n\n')
 
 
 ################################  LRU ###################################
+
 ile2 = [0] * 3 
-[7, 8, 6]
+
 for k in range(len(ramki)):
     for i in range(l_ciagow):
         zawartosc_ramki = [0] * ramki[k]
@@ -50,6 +50,9 @@ for k in range(len(ramki)):
                 index += 1
                 id[id.index(min(id))] = index
                 ile2[k] += 1
+            else:
+                index += 1
+                id[zawartosc_ramki.index(nr_stron[i][j])] = index
 
 print("\nŚrednia liczba brakujących stron dla ramki o zakresie 3:", ile2[0])
 print("Średnia liczba brakujących stron dla ramki o zakresie 5:", ile2[1])

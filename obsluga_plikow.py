@@ -33,7 +33,6 @@ if __name__ == "__main__":
     t_przybycia = [[0 for x in range(l_procesow)] for y in range(l_ciagow)]
     t_wykonania = [[0 for x in range(l_procesow)] for y in range(l_ciagow)]
 
-
     random.seed(54821)
     for i in range(l_ciagow):
         for j in range(l_procesow):
@@ -50,9 +49,6 @@ if __name__ == "__main__":
         for j in range(l_stron):
             nr_stron[i][j] = random.randint(1,20)                   
 
-
-
-
     # [10,20,30]
     # ["10",20,30]
     # ["10","20","30"]
@@ -61,7 +57,3 @@ if __name__ == "__main__":
     zapiszPlik("przybycie.txt", t_przybycia, l_procesow, l_ciagow)
     zapiszPlik("wykonanie.txt", t_wykonania, l_procesow, l_ciagow)
     zapiszPlik("strony.txt", nr_stron, l_stron, l_ciagow)
-
-
-
-
