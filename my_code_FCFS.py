@@ -38,7 +38,9 @@ t_wykonania = obsluga_plikow.otworzPlik("wykonanie.txt", l_procesow, l_ciagow)
 t_przybycia_fcfs = t_przybycia
 
 for i in range(l_ciagow):
-    t_przybycia_fcfs[i].sort()                                           #sortowanie od najmniejszego czasu przybycia
+   # t_przybycia_fcfs[i].sort()                    #sortowanie od najmniejszego czasu przybycia
+    t_przybycia_fcfs, t_wykonania = zip(*sorted(zip(t_przybycia_fcfs, t_wykonania)))     
+    t_przybycia_fcfs, t_wykonania = (list(t) for t in zip(*sorted(zip(t_przybycia_fcfs, t_wykonania))))
     for j in range(l_procesow):                                        
 
         t_przetwarzania[i][j] = t_wykonania[i][j] + t_przybycia_fcfs[i][j]   #Turn around time 
