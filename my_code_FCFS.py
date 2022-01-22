@@ -1,9 +1,7 @@
 #Python
 #testowanie algorytmu FCFS z SJF
 
-import random 
 import obsluga_plikow
-
 
 def sprawdz_t_czekania(l_ciagow, t_wykonania, t_czekania, t_przybycia):
     t_obslugi = [0] * l_ciagow
@@ -33,45 +31,17 @@ t_przetwarzania = [[0 for x in range(l_procesow)] for y in range(l_ciagow)]
 t_suma_czekania = 0
 t_suma_przetwarzania = 0
 
-# a = "abcd" -> a[1] = 3 -> "a3cd" 
-
-
 t_przybycia = obsluga_plikow.otworzPlik("przybycie.txt",l_procesow, l_ciagow)
 t_wykonania = obsluga_plikow.otworzPlik("wykonanie.txt", l_procesow, l_ciagow)
 
-# with open("przybycie.txt",'r') as plik_p:                                                               ###zmiennne na polski
-#     dane = plik_p.readlines()
-    
-#     for i in range(l_ciagow):
-#         dane[i] = dane[i].split(" ")
-#         for j in range(l_procesow):
-#             dane[i][j] = int(dane[i][j])
-#     t_przybycia = dane
-#     plik_p.close()
-
-# with open("wykonanie.txt",'r') as file_w:
-#     content = file_w.readlines()
-#     file_w.close()
-
-# for i in range(l_ciagow):
-#     content[i] = content[i].split(" ")
-#     for j in range(l_procesow):
-#         content[i][j] = int(content[i][j])
-# t_wykonania = content
-    
-                                                                                                        ###
-
-                                          
-        
 # FCFS
 t_przybycia_fcfs = t_przybycia
 
 for i in range(l_ciagow):
-    t_przybycia_fcfs[i].sort()                                               #sortowanie od najmniejszego czasu przybycia
+    t_przybycia_fcfs[i].sort()                                           #sortowanie od najmniejszego czasu przybycia
     for j in range(l_procesow):                                        
 
         t_przetwarzania[i][j] = t_wykonania[i][j] + t_przybycia_fcfs[i][j]   #Turn around time 
-        #t_czekania[i][j] = t_przetwarzania[i][j] - t_wykonania[i][j]    #waiting time
 
     t_czekania[i] = sprawdz_t_czekania(l_ciagow, t_wykonania[i], t_czekania[i], t_przybycia_fcfs[i])
 
@@ -88,10 +58,6 @@ t_srednia_przetwarzania= t_suma_przetwarzania/(l_procesow*l_ciagow)
 print(t_srednia_czekania)
 print(t_srednia_przetwarzania)
 
-
-
-# with open("1.txt","w") as file:
-#     file.writelines(str(t_przybycia_fcfs[0]))
 
 ###############################################################################
 #####################                  SJF                 ####################
@@ -121,7 +87,6 @@ t_srednia_przetwarzania_sjf = t_suma_przetwarzania_sjf/(l_procesow*l_ciagow)
 
 print(t_srednia_czekania_sjf) 
 print(t_srednia_przetwarzania_sjf)
-
 
 # plik = open("lokalizacja", "r")
 # plik.writelines()
@@ -159,9 +124,3 @@ except FileExistsError:
             plik.write("\nŚrednia przetwarzania SJF: ")
             plik.write(str(t_srednia_przetwarzania_sjf))
             plik.close()
-        
-
-
-
-
-
