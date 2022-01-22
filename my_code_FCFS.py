@@ -2,6 +2,8 @@
 #testowanie algorytmu FCFS z SJF
 
 import random 
+import obsluga_plikow
+
 
 def sprawdz_t_czekania(l_ciagow, t_wykonania, t_czekania, t_przybycia):
     t_obslugi = [0] * l_ciagow
@@ -33,33 +35,32 @@ t_suma_przetwarzania = 0
 
 # a = "abcd" -> a[1] = 3 -> "a3cd" 
 
-with open("przybycie.txt",'r') as plik_p:                                                               ###zmiennne na polski
-    dane = plik_p.readlines()
+
+t_przybycia = obsluga_plikow.otworzPlik("przybycie.txt",l_procesow, l_ciagow)
+t_wykonania = obsluga_plikow.otworzPlik("wykonanie.txt", l_procesow, l_ciagow)
+
+# with open("przybycie.txt",'r') as plik_p:                                                               ###zmiennne na polski
+#     dane = plik_p.readlines()
     
-    for i in range(l_ciagow):
-        dane[i] = dane[i].split(" ")
-        for j in range(l_procesow):
-            dane[i][j] = int(dane[i][j])
-    t_przybycia = dane
-    plik_p.close()
+#     for i in range(l_ciagow):
+#         dane[i] = dane[i].split(" ")
+#         for j in range(l_procesow):
+#             dane[i][j] = int(dane[i][j])
+#     t_przybycia = dane
+#     plik_p.close()
 
-with open("wykonanie.txt",'r') as file_w:
-    content = file_w.readlines()
-    file_w.close()
+# with open("wykonanie.txt",'r') as file_w:
+#     content = file_w.readlines()
+#     file_w.close()
 
-for i in range(l_ciagow):
-    content[i] = content[i].split(" ")
-    for j in range(l_procesow):
-        content[i][j] = int(content[i][j])
-t_wykonania = content
+# for i in range(l_ciagow):
+#     content[i] = content[i].split(" ")
+#     for j in range(l_procesow):
+#         content[i][j] = int(content[i][j])
+# t_wykonania = content
     
                                                                                                         ###
-#określanie czasów
-# random.seed(54821)
-# for i in range(l_ciagow):
-#     for j in range(l_procesow):
-#         t_przybycia[i][j] = random.randint(1,50)                       #arrival time            zwiększ jeśli będzie mała różnica z innym algorytmem
-#         t_wykonania[i][j] = random.randint(1,20)                       #burst time
+
                                           
         
 # FCFS
