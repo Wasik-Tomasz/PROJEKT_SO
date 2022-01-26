@@ -36,7 +36,7 @@ if __name__ == "__main__":
     random.seed(54821)
     for i in range(l_ciagow):
         for j in range(l_procesow):
-            t_przybycia[i][j] = random.randint(1,50)                       #arrival time            zwiększ jeśli będzie mała różnica z innym algorytmem
+            t_przybycia[i][j] = random.randint(1,50)                     
             t_wykonania[i][j] = random.randint(1,20)
 
     # zastępywanie stron
@@ -48,11 +48,6 @@ if __name__ == "__main__":
     for i in range(l_ciagow):
         for j in range(l_stron):
             nr_stron[i][j] = random.randint(1,20)                   
-
-    # [10,20,30]
-    # ["10",20,30]
-    # ["10","20","30"]
-    # "10 20 30" - ' '.join()
 
     zapiszPlik("przybycie.txt", t_przybycia, l_procesow, l_ciagow)
     zapiszPlik("wykonanie.txt", t_wykonania, l_procesow, l_ciagow)

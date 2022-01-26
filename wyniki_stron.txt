@@ -3,6 +3,6 @@ FIFO
 Œrednia liczba brakuj¹cych stron dla ramki o zakresie 5: 7570
 Œrednia liczba brakuj¹cych stron dla ramki o zakresie 7: 6604
 LRU
-Œrednia liczba brakuj¹cych stron dla ramki o zakresie 3: 8545
-Œrednia liczba brakuj¹cych stron dla ramki o zakresie 5: 7570
-Œrednia liczba brakuj¹cych stron dla ramki o zakresie 7: 6604
+Œrednia liczba brakuj¹cych stron dla ramki o zakresie 3: 8542
+Œrednia liczba brakuj¹cych stron dla ramki o zakresie 5: 7583
+Œrednia liczba brakuj¹cych stron dla ramki o zakresie 7: 6612
