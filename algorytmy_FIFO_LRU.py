@@ -35,7 +35,7 @@ print("Średnia liczba brakujących stron dla ramki o zakresie 5:", ile[1])
 print("Średnia liczba brakujących stron dla ramki o zakresie 7:", ile[2],end='\n\n')
 
 
-################################  LRU ###################################
+################################  LRU  ###################################
 
 ile2 = [0] * 3 
 
