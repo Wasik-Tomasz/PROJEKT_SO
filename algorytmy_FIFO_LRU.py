@@ -1,5 +1,5 @@
 #Python
-#Algorytm zastępywania stron FIFO
+#Algorytmy zastępywania stron FIFO(bez modyfikacji) i LRU
 
 import obsluga_plikow
 
@@ -65,8 +65,8 @@ try:
         for i in range(len(ile)):
             plik.write("Średnia liczba brakujących stron dla ramki o zakresie {}: {}\n".format(ramki[i],ile[i]))
         plik.write("LRU\n")
-        for i in range(len(ile)):
-            plik.write("Średnia liczba brakujących stron dla ramki o zakresie {}: {}\n".format(ramki[i],ile[i]))
+        for i in range(len(ile2)):
+            plik.write("Średnia liczba brakujących stron dla ramki o zakresie {}: {}\n".format(ramki[i],ile2[i]))
         plik.close()
 
 except FileExistsError:
@@ -76,8 +76,8 @@ except FileExistsError:
     if test.lower() == 'y':
         with open("wyniki_stron.txt", "w") as plik:
             plik.write("FIFO\n")
-            for i in range(len(ile2)):
-                plik.write("Średnia liczba brakujących stron dla ramki o zakresie {}: {}\n".format(ramki[i],ile2[i]))
+            for i in range(len(ile)):
+                plik.write("Średnia liczba brakujących stron dla ramki o zakresie {}: {}\n".format(ramki[i],ile[i]))
             plik.write("LRU\n")
             for i in range(len(ile2)):
                 plik.write("Średnia liczba brakujących stron dla ramki o zakresie {}: {}\n".format(ramki[i],ile2[i]))

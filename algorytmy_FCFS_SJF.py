@@ -38,7 +38,6 @@ t_wykonania = obsluga_plikow.otworzPlik("wykonanie.txt", l_procesow, l_ciagow)
 t_przybycia_fcfs = t_przybycia
 
 for i in range(l_ciagow):
-   # t_przybycia_fcfs[i].sort()                    #sortowanie od najmniejszego czasu przybycia
     t_przybycia_fcfs, t_wykonania = zip(*sorted(zip(t_przybycia_fcfs, t_wykonania)))     
     t_przybycia_fcfs, t_wykonania = (list(t) for t in zip(*sorted(zip(t_przybycia_fcfs, t_wykonania))))
     for j in range(l_procesow):                                        
@@ -57,8 +56,8 @@ for i in range(l_ciagow):
 t_srednia_czekania = t_suma_czekania/(l_procesow*l_ciagow)
 t_srednia_przetwarzania= t_suma_przetwarzania/(l_procesow*l_ciagow)
  
-print(t_srednia_czekania)
-print(t_srednia_przetwarzania)
+print("{:.3f}".format(t_srednia_czekania))
+print("{:.3f}".format(t_srednia_przetwarzania))
 
 
 ###############################################################################
@@ -87,28 +86,19 @@ t_srednia_czekania_sjf = t_suma_czekania_sjf/(l_procesow*l_ciagow)
 t_srednia_przetwarzania_sjf = t_suma_przetwarzania_sjf/(l_procesow*l_ciagow)
 
 
-print(t_srednia_czekania_sjf) 
-print(t_srednia_przetwarzania_sjf)
-
-# plik = open("lokalizacja", "r")
-# plik.writelines()
-# plik.close()                                                                                                                                                                                          ###########################################################
-
-# 'w' otwiera plik, jeżeli istnieje to usuwa jego zawartość
-# 'a' dopisuje do końca pliku
-# 'r+' otwiera w trybie r/w
-# 'r' otwiera w trybie odczytu
+print("{:.3f}".format(t_srednia_czekania_sjf)) 
+print("{:.3f}".format(t_srednia_przetwarzania_sjf))
 
 try:
     with open("wyniki.txt", "x") as plik:
         plik.write("Średnia czekania FCFS: ")
-        plik.write(str(t_srednia_czekania))
+        plik.write("{:.3f}".format(t_srednia_czekania))
         plik.write("\nŚrednia przetwarzania FCFS: ")
-        plik.write(str(t_srednia_przetwarzania))
+        plik.write("{:.3f}".format(t_srednia_przetwarzania))
         plik.write("\nŚrednia czekania SJF: ")
-        plik.write(str(t_srednia_czekania_sjf))
+        plik.write("{:.3f}".format(t_srednia_czekania_sjf))
         plik.write("\nŚrednia przetwarzania SJF: ")
-        plik.write(str(t_srednia_przetwarzania_sjf))
+        plik.write("{:.3f}".format(t_srednia_przetwarzania_sjf))
 
         plik.close()
 except FileExistsError:
@@ -118,11 +108,11 @@ except FileExistsError:
     if test.lower() == 'y':
         with open("wyniki.txt", "w") as plik:
             plik.write("Średnia czekania FCFS: ")
-            plik.write(str(t_srednia_czekania))
+            plik.write("{:.3f}".format(t_srednia_czekania))
             plik.write("\nŚrednia przetwarzania FCFS: ")
-            plik.write(str(t_srednia_przetwarzania))
+            plik.write("{:.3f}".format(t_srednia_przetwarzania))
             plik.write("\nŚrednia czekania SJF: ")
-            plik.write(str(t_srednia_czekania_sjf))
+            plik.write("{:.3f}".format(t_srednia_czekania_sjf))
             plik.write("\nŚrednia przetwarzania SJF: ")
-            plik.write(str(t_srednia_przetwarzania_sjf))
+            plik.write("{:.3f}".format(t_srednia_przetwarzania_sjf))
             plik.close()
