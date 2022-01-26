@@ -1,4 +1,4 @@
-Œrednia czekania FCFS: 494.876
+Œrednia czekania FCFS: 488.042
 Œrednia przetwarzania FCFS: 36.163
-Œrednia czekania SJF: 331.105
+Œrednia czekania SJF: 330.897
 Œrednia przetwarzania SJF: 36.163

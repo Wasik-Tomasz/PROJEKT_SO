@@ -35,16 +35,17 @@ t_przybycia = obsluga_plikow.otworzPlik("przybycie.txt",l_procesow, l_ciagow)
 t_wykonania = obsluga_plikow.otworzPlik("wykonanie.txt", l_procesow, l_ciagow)
 
 # FCFS
-t_przybycia_fcfs = t_przybycia
+t_przybycia_fcfs = t_przybycia.copy()
+t_wykonania_fcfs = t_wykonania.copy()
 
 for i in range(l_ciagow):
-    t_przybycia_fcfs, t_wykonania = zip(*sorted(zip(t_przybycia_fcfs, t_wykonania)))     
-    t_przybycia_fcfs, t_wykonania = (list(t) for t in zip(*sorted(zip(t_przybycia_fcfs, t_wykonania))))
+    t_przybycia_fcfs[i], t_wykonania_fcfs[i] = zip(*sorted(zip(t_przybycia_fcfs[i], t_wykonania_fcfs[i])))     
+    t_przybycia_fcfs[i], t_wykonania_fcfs[i] = (list(t) for t in zip(*sorted(zip(t_przybycia_fcfs[i], t_wykonania_fcfs[i]))))
     for j in range(l_procesow):                                        
 
-        t_przetwarzania[i][j] = t_wykonania[i][j] + t_przybycia_fcfs[i][j]   #Turn around time 
+        t_przetwarzania[i][j] = t_wykonania_fcfs[i][j] + t_przybycia_fcfs[i][j]   #Turn around time 
 
-    t_czekania[i] = sprawdz_t_czekania(l_ciagow, t_wykonania[i], t_czekania[i], t_przybycia_fcfs[i])
+    t_czekania[i] = sprawdz_t_czekania(l_ciagow, t_wykonania_fcfs[i], t_czekania[i], t_przybycia_fcfs[i])
 
     for j in range(l_procesow):
         t_realizacji[i][j] = t_przetwarzania[i][j] + t_czekania[i][j]   #Completion Time
@@ -64,17 +65,21 @@ print("{:.3f}".format(t_srednia_przetwarzania))
 #####################                  SJF                 ####################
 ###############################################################################
 
-t_wykonania_sjf = t_wykonania
+t_wykonania_sjf = t_wykonania.copy()
+t_przybycia_sjf = t_przybycia.copy()
+
 t_suma_czekania_sjf = 0
 t_suma_przetwarzania_sjf = 0
 
+
 for i in range(l_ciagow):
-    t_wykonania_sjf[i].sort()         
+    t_wykonania_sjf[i], t_przybycia_sjf[i] = zip(*sorted(zip(t_wykonania_sjf[i], t_przybycia_sjf[i])))     
+    t_wykonania_sjf[i], t_przybycia_sjf[i] = (list(t) for t in zip(*sorted(zip(t_wykonania_sjf[i], t_przybycia_sjf[i]))))       
     for j in range(l_procesow): 
 
-        t_przetwarzania[i][j] = t_wykonania_sjf[i][j] + t_przybycia[i][j]   #Turn around time 
+        t_przetwarzania[i][j] = t_wykonania_sjf[i][j] + t_przybycia_sjf[i][j]   #Turn around time 
 
-    t_czekania[i] = sprawdz_t_czekania(l_ciagow, t_wykonania_sjf[i], t_czekania[i], t_przybycia[i]) 
+    t_czekania[i] = sprawdz_t_czekania(l_ciagow, t_wykonania_sjf[i], t_czekania[i], t_przybycia_sjf[i]) 
 
     for j in range(l_procesow):
         t_realizacji[i][j] = t_przetwarzania[i][j] + t_czekania[i][j]   #Completion Time
@@ -116,3 +121,12 @@ except FileExistsError:
             plik.write("\nŚrednia przetwarzania SJF: ")
             plik.write("{:.3f}".format(t_srednia_przetwarzania_sjf))
             plik.close()
+
+obsluga_plikow.zapiszPlik("posortowane_przybycie_fcfs.txt", t_przybycia_fcfs, l_procesow, l_ciagow)
+obsluga_plikow.zapiszPlik("posortowane_wykonania_fcfs.txt", t_wykonania_fcfs, l_procesow, l_ciagow)
+
+obsluga_plikow.zapiszPlik("posortowane_przybycie_sjf.txt", t_przybycia_sjf, l_procesow, l_ciagow)
+obsluga_plikow.zapiszPlik("posortowane_wykonania_sjf.txt", t_wykonania_sjf, l_procesow, l_ciagow)
+
+
+
